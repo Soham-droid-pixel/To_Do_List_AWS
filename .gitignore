@@ -1,0 +1,34 @@
+# ── Dependencies ──────────────────────────────────────────────
+node_modules/
+.pnp
+.pnp.js
+
+# ── Environment / Secrets ─────────────────────────────────────
+.env
+.env.local
+.env.*.local
+# Keep the example template in git
+!.env.example
+
+# ── React / Vite build output ─────────────────────────────────
+client/dist/
+client/.vite/
+
+# ── PM2 logs & runtime files ──────────────────────────────────
+*.log
+logs/
+pids/
+*.pid
+*.seed
+.pm2/
+
+# ── OS / Editor ───────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/settings.json
+.idea/
+
+# ── AWS credentials (never commit these) ──────────────────────
+.aws/
+credentials
+aws-exports.js

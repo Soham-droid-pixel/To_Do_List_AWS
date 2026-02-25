@@ -1,0 +1,39 @@
+{
+  "_comment": "Sample DynamoDB item showing all 5 attribute types used in this project.",
+  "_raw_dynamodb_format": {
+    "taskId":      { "S": "d4f8c2a1-7b3e-4f09-a8d2-1c3e5f7a9b0d" },
+    "title":       { "S": "Deploy DynamoDB CRUD app to EC2" },
+    "priority":    { "N": "5" },
+    "isCompleted": { "BOOL": false },
+    "tags":        { "L": [{ "S": "aws" }, { "S": "devops" }, { "S": "urgent" }] },
+    "metadata":    {
+      "M": {
+        "assignee": { "S": "Alice" },
+        "dueDate":  { "S": "2026-03-01" },
+        "category": { "S": "Infrastructure" }
+      }
+    },
+    "createdAt":   { "S": "2026-02-25T10:00:00.000Z" }
+  },
+  "_document_client_format": {
+    "taskId":      "d4f8c2a1-7b3e-4f09-a8d2-1c3e5f7a9b0d",
+    "title":       "Deploy DynamoDB CRUD app to EC2",
+    "priority":    5,
+    "isCompleted": false,
+    "tags":        ["aws", "devops", "urgent"],
+    "metadata": {
+      "assignee": "Alice",
+      "dueDate":  "2026-03-01",
+      "category": "Infrastructure"
+    },
+    "createdAt": "2026-02-25T10:00:00.000Z"
+  },
+  "attribute_types_legend": {
+    "taskId":      "S  – String  · Partition key (UUID)",
+    "title":       "S  – String",
+    "priority":    "N  – Number  · Integer 1-5",
+    "isCompleted": "BOOL – Boolean",
+    "tags":        "L  – List    · Array of strings",
+    "metadata":    "M  – Map     · Nested object with string values"
+  }
+}
