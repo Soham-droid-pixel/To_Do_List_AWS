@@ -25,20 +25,14 @@ app.options('*', cors()); // respond 200 to ALL preflight OPTIONS requests
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-/* ── API Routes ─────────────────────────────────────────────────
-   Nginx forwards ALL traffic to Express unchanged.
-   Express handles /api/* routes and React static files.
-   Routes available:
-     POST   /api/create
-     GET    /api/read
-     PUT    /api/update
-     DELETE /api/delete/:id
-     GET    /api/health
-──────────────────────────────────────────────────────────────── */
-app.use('/api', taskRoutes);
+/* ── API Routes ── */
+// EC2 Nginx strips the /api/ prefix before forwarding to Express.
+// So Express only ever sees: /create  /read  /update  /delete/:id
+// Nginx config: proxy_pass http://127.0.0.1:5000/;  (trailing slash = strip)
+app.use('/', taskRoutes);
 
 /* ── Health check ── */
-app.get('/api/health', (_req, res) => res.json({ status: 'ok', ts: new Date().toISOString() }));
+app.get('/health', (_req, res) => res.json({ status: 'ok', ts: new Date().toISOString() }));
 
 /* ── Serve React build in production ── */
 // After running `npm run build` inside /client, the dist/ folder is served here.
