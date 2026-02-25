@@ -25,11 +25,13 @@ app.options('*', cors()); // respond 200 to ALL preflight OPTIONS requests
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-/* ── API Routes (all prefixed with /api) ── */
-app.use('/api', taskRoutes);  // POST /api/create  GET /api/read  PUT /api/update  DELETE /api/delete/:id
+/* ── API Routes ── */
+// Nginx proxies /api/* → Express as /* (trailing slash strips /api prefix)
+// So Express only sees: /create  /read  /update  /delete/:id
+app.use('/', taskRoutes);
 
 /* ── Health check ── */
-app.get('/api/health', (_req, res) => res.json({ status: 'ok', ts: new Date().toISOString() }));
+app.get('/health', (_req, res) => res.json({ status: 'ok', ts: new Date().toISOString() }));
 
 /* ── Serve React build in production ── */
 // After running `npm run build` inside /client, the dist/ folder is served here.
