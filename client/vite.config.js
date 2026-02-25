@@ -7,12 +7,8 @@ export default defineConfig({
   server: {
     port: 3000,
     proxy: {
-      // Dev-only: forward API calls to Express (port 5000)
-      '/create': 'http://localhost:5000',
-      '/read': 'http://localhost:5000',
-      '/update': 'http://localhost:5000',
-      '/delete': 'http://localhost:5000',
-      '/health': 'http://localhost:5000',
+      // Dev-only: forward /api/* calls to Express (port 5000)
+      '/api': 'http://localhost:5000',
     },
   },
   build: {

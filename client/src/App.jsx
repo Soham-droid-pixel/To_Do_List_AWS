@@ -8,7 +8,7 @@ import axios from 'axios';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
 
-const API_BASE = ''; // same origin (Vite proxy in dev, Express static in prod)
+const API_BASE = '/api'; // all API calls go through /api/* (proxied by Nginx → Express)
 
 export default function App() {
   const [tasks, setTasks]           = useState([]);
